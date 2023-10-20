@@ -1,0 +1,17 @@
+name: wind_droughts_analysis
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python
+  - numpy
+  - scipy
+  - xarray
+  - netcdf4
+  - pandas
+  - geopandas
+  - regionmask
+  - xhistogram
+  - matplotlib
+  - cartopy
