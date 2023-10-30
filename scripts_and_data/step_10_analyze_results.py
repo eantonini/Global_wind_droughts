@@ -67,6 +67,10 @@ maximum_energy_deficits_for_wind_droughts = energy_deficits['wind_droughts'].ise
 # Calculate the spatial extension of the most severe wind droughts in each continent and in each year.
 drought_extension = utilities.get_drought_extension(cell_areas, geographic_masks, continent_masks, wind_resource, maximum_energy_deficits_for_wind_droughts)
 
+# Calculate the percentage of land and coast surface with a mean wind power density equal to or greater than 150 W/m2.
+land_and_coast_surface = cell_areas*np.logical_or(geographic_masks['land'],geographic_masks['coast'])
+percentage_of_land_and_coast_surface_with_mean_wind_power_density_above_150_W_per_m2 = ((wind_resource['mean_wind_power_density']>=150)*land_and_coast_surface).sum()/land_and_coast_surface.sum()*100
+
 
 # FIGURE 1
 figure_1.plot_figure_1(lons_grid, lats_grid, percentile_rank_of_wind_power_density, percentile_rank_of_seasonal_variability, percentile_rank_of_weather_variability, wind_resource, energy_deficits)

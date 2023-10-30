@@ -1,2 +1,5 @@
-postprocessed_results
 energy_deficit_figure_sample
+scripts_and_data/__pycache__
+scripts_and_data/postprocessed_results
+scripts_and_data/figures
+scripts_and_data/figure_modules/__pycache__

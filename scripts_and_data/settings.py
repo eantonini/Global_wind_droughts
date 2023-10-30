@@ -25,7 +25,7 @@ else:
     climate_data_directory = working_directory + '/ERA5_data'
 
 general_data_directory = working_directory + '/data'
-result_directory = working_directory + '/postprocessed_results'
+results_directory = working_directory + '/postprocessed_results'
 figures_directory = working_directory + '/figures'
 
 use_dask_mpi = False
