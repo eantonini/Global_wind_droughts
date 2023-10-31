@@ -70,12 +70,12 @@ def plot_supplementary_figure_1():
     colors = ['green', 'green', 'orange', 'orange', 'blue', 'blue']
     plot_titles = ['Individual year', 'Climatological year']
     panel_letter = ['b', 'a', 'd', 'c', 'e', 'f']
-    titles = ['/Supplementary Figure 1 - Source from individual year capacity factor time series',
-              '/Supplementary Figure 1 - Source from climatological capacity factor time series',
-              '/Supplementary Figure 1 - Generation time series from individual year capacity factor',
-              '/Supplementary Figure 1 - Generation time series from climatological capacity factor',
-              '/Supplementary Figure 1 - Demand time series of constant value',
-              '/Supplementary Figure 1 - Demand time series from climatological capacity factor']
+    titles = ['/Supplementary Figure 1b - Source from individual year capacity factor time series',
+              '/Supplementary Figure 1a - Source from climatological capacity factor time series',
+              '/Supplementary Figure 1d - Generation time series from individual year capacity factor',
+              '/Supplementary Figure 1c - Generation time series from climatological capacity factor',
+              '/Supplementary Figure 1e - Demand time series of constant value',
+              '/Supplementary Figure 1f - Demand time series from climatological capacity factor']
 
     # Plot the sample time series of wind power density, generation and demand.
     for ii in range(len(variables_to_plot)):

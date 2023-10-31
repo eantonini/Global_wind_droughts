@@ -91,7 +91,7 @@ def plot_supplementary_figure_6(lons_grid, lats_grid, geographic_masks, wind_res
         else:
             im = ax.contourf(lons_grid, lats_grid, variables_to_plot[ii], levels=map_levels[ii], cmap=map_colormaps[ii], transform=data_crs)
 
-        # Annotate the maps with the variable names
+        # Annotate the maps with the variable names.
         if ii == 0:
             ax.annotate(map_variable_name[ii], xy=(1.18, 0.5), xycoords='axes fraction', horizontalalignment='center', verticalalignment='center', weight='bold', fontsize=26, rotation=270)
         elif ii == 1:
@@ -106,7 +106,7 @@ def plot_supplementary_figure_6(lons_grid, lats_grid, geographic_masks, wind_res
         # Annotate the description of the grey regions.
         if ii == 2:
             cmap = mpl.colormaps.get_cmap('Greys') # type: ignore
-            ax.annotate('Grey regions have a mean power density\nless than 150 W m$^{-2}$', xy=(0.5, -0.13), xycoords='axes fraction', horizontalalignment='center', verticalalignment='center', weight='bold', fontsize=26, color=cmap(1/3))
+            ax.annotate('Grey regions have a mean power density\nless than 150 W m$^{-2}$', xy=(0.5, -0.10), xycoords='axes fraction', horizontalalignment='center', verticalalignment='center', weight='bold', fontsize=20, color=cmap(1/3))
         
         # Add a colorbar. 
         cbar = plt.colorbar(im, shrink=0.6, ax=ax, pad=0.03)

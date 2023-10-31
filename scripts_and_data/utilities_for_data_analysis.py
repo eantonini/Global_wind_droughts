@@ -328,7 +328,7 @@ def get_continent_masks(lons, lats):
     return continent_masks
 
 
-def get_histogram(geographic_masks, wind_power_density, energy_deficits):
+def get_histogram(geographic_masks, wind_power_density_max, wind_power_density, energy_deficits):
     '''
     Calcualte the 2D histogram showing the joint probability distribution of energy deficit and wind power density.
 
@@ -347,8 +347,8 @@ def get_histogram(geographic_masks, wind_power_density, energy_deficits):
         Dataset containing the 2D histogram showing the joint probability distribution of energy deficit and wind power density
     '''
 
-    # Get the max wind power density.
-    rounded_max_wind_power_density = np.ceil(wind_power_density.max().values/10)*10
+    # Get the max wind power density. Keep it the same for both seasonal and weather variability.
+    rounded_max_wind_power_density = np.ceil(wind_power_density_max.values/10)*10
 
     # Define the bin edges of the 2D histogram.
     x_bin_edges = np.insert(np.logspace(-2.5, 0, 25),0,0)*rounded_max_wind_power_density

@@ -162,7 +162,7 @@ def plot_supplementary_figure_5(wind_resource, histogram_of_seasonal_variability
     '''
 
     # Get the max wind power density.
-    rounded_max_wind_power_density = np.ceil(wind_resource['mean_wind_power_density'].max().values/10)*10
+    rounded_max_wind_power_density = np.ceil(wind_resource['annual_mean_wind_power_density'].max().values/10)*10
 
     # Define the levels of the main and secondary histograms.
     main_histogram_levels = np.insert(np.logspace(-5.5,-1,10),0,0)
@@ -178,7 +178,7 @@ def plot_supplementary_figure_5(wind_resource, histogram_of_seasonal_variability
     panel_letter = [['a', 'b', 'c'], ['d', 'e', 'f']]
     y_variable_name = ['Seasonal variability', 'Weather variability']
     y_variable_secondary_name = ['Energy deficit\nfor seasonal profile\nto generate constant power\n[fraction of maximum]',
-                                 'Mean energy deficit\nfor individual year profile\nto generate seasonal power\n[fraction of maximum]']
+                                 'Energy deficit\nfor individual year profile\nto generate seasonal power\n[fraction of maximum]']
     
     # Define the colormaps, the line colors, the titles and whether to plot the y axis label.
     main_histogram_colormaps = [plt.colormaps['Greens'],  plt.colormaps['Oranges'], plt.colormaps['Blues']] # type: ignore
@@ -210,7 +210,7 @@ def plot_supplementary_figure_5(wind_resource, histogram_of_seasonal_variability
                        histogram_title[ii], plot_colorbar[0], plot_median_label[0], median_label_y[0][ii], plot_secondary_histogram_x[0], plot_subplot_title[0], panel_letter[0][ii], rounded_max_wind_power_density)
     
     # Set the title and save the first figure.
-    title = '/Supplementary Figure 4 - Histogram of wind resource and seasonal variability'
+    title = '/Supplementary Figure 5a - Histogram of wind resource and seasonal variability'
     fig.savefig(settings.figures_directory + title+'.png', bbox_inches = 'tight', dpi = 300)
 
     # Initialize the second figure and the axes of the subplots, and set the font size.
@@ -228,5 +228,5 @@ def plot_supplementary_figure_5(wind_resource, histogram_of_seasonal_variability
                        histogram_title[ii], plot_colorbar[1], plot_median_label[1], median_label_y[1][ii], plot_secondary_histogram_x[1], plot_subplot_title[1], panel_letter[1][ii], rounded_max_wind_power_density)
 
     # Set the title and save the second figure.
-    title = '/Supplementary Figure 5 - Histogram of wind resource and weather variability'
+    title = '/Supplementary Figure 5b - Histogram of wind resource and weather variability'
     fig.savefig(settings.figures_directory + title+'.png', bbox_inches = 'tight', dpi = 300)
