@@ -90,11 +90,11 @@ def plot_figure_3(lons_grid, lats_grid, geographic_masks, continent_masks, wind_
     ax.set_ylim(start_year-9,end_year+17)
 
     # Annotate the title and the legend.
-    ax.annotate('Distribution across years\nof the fraction of land affected\nby the most severe wind droughts',
-                xy=(0.05, 0.90), xycoords='axes fraction', horizontalalignment='left', verticalalignment='center', weight='bold', fontsize=20)
-    ax.add_patch(Rectangle((0.6, 1973), 0.1/max_drought_extension, 1, facecolor='k', fill=True))
-    ax.annotate('10% of area in region with power density ≥ 150 W m$^{-2}$',
-                xy=(0.115, 0.049), xycoords='axes fraction', horizontalalignment='left', verticalalignment='center', weight='bold', fontsize=20)
+    ax.annotate('Distribution across years\nof the fraction of continents affected\nby the most severe wind droughts',
+                xy=(0.04, 0.90), xycoords='axes fraction', horizontalalignment='left', verticalalignment='center', weight='bold', fontsize=20)
+    ax.add_patch(Rectangle((0.57, 1973), 0.1/max_drought_extension, 1, facecolor='k', fill=True))
+    ax.annotate('10% of continent area with power density ≥ 150 W m$^{-2}$',
+                xy=(0.108, 0.049), xycoords='axes fraction', horizontalalignment='left', verticalalignment='center', weight='bold', fontsize=20)
 
     # In the top right corner, add a subplot of the world map with the regions with power density ≥ 150 W/m^2
     ax_subplot = fig.add_axes([0.67,0.745,0.25,0.25], projection=map_projection)

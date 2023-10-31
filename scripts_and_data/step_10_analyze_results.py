@@ -35,6 +35,7 @@ cell_areas = utilities.get_grid_cell_area(lons, lats)
 # Define the land, coast and sea masks and the continent masks.
 geographic_masks = utilities.get_land_coast_sea_masks()
 continent_masks = utilities.get_continent_masks(lons, lats)
+land_and_coast_mask = np.logical_or(geographic_masks['land'], geographic_masks['coast'])
 
 # Read the wind resource and energy deficits.
 wind_resource = utilities.read_wind_speed_and_power_density()
@@ -54,9 +55,9 @@ regression_of_weather_variability = utilities.linear_regression(energy_deficits[
 regression_of_wind_droughts = utilities.linear_regression(energy_deficits['wind_droughts']/energy_deficits['wind_droughts'].mean(dim='year'))
 
 # Calculate the percentile rank of the wind power density, seasonal variability and weather variability.
-percentile_rank_of_wind_power_density = utilities.get_percentile_rank(wind_resource['mean_wind_power_density'], np.logical_or(geographic_masks['land'], geographic_masks['coast']))
-percentile_rank_of_seasonal_variability = utilities.get_percentile_rank(-energy_deficits['seasonal_variability'], np.logical_or(geographic_masks['land'], geographic_masks['coast']))
-percentile_rank_of_weather_variability = utilities.get_percentile_rank(-energy_deficits['weather_variability'].mean(dim='year'), np.logical_or(geographic_masks['land'], geographic_masks['coast']))
+percentile_rank_of_wind_power_density = utilities.get_percentile_rank(wind_resource['mean_wind_power_density'], land_and_coast_mask)
+percentile_rank_of_seasonal_variability = utilities.get_percentile_rank(-energy_deficits['seasonal_variability'], land_and_coast_mask)
+percentile_rank_of_weather_variability = utilities.get_percentile_rank(-energy_deficits['weather_variability'].mean(dim='year'), land_and_coast_mask)
 
 # Calculate the minimum percentile rank across the wind power density, seasonal variability and weather variability.
 minimum_percentile_rank = np.minimum(np.minimum(percentile_rank_of_wind_power_density, percentile_rank_of_seasonal_variability), percentile_rank_of_weather_variability)
@@ -67,13 +68,23 @@ maximum_energy_deficits_for_wind_droughts = energy_deficits['wind_droughts'].ise
 # Calculate the spatial extension of the most severe wind droughts in each continent and in each year.
 drought_extension = utilities.get_drought_extension(cell_areas, geographic_masks, continent_masks, wind_resource, maximum_energy_deficits_for_wind_droughts)
 
-# Calculate the percentage of land and coast surface with a mean wind power density equal to or greater than 150 W/m2.
-land_and_coast_surface = cell_areas*np.logical_or(geographic_masks['land'],geographic_masks['coast'])
-percentage_of_land_and_coast_surface_with_mean_wind_power_density_above_150_W_per_m2 = ((wind_resource['mean_wind_power_density']>=150)*land_and_coast_surface).sum()/land_and_coast_surface.sum()*100
+# Calculate the percentage of land and coast areas with a mean wind power density equal to or greater than 150 W/m2.
+land_and_coast_surface = cell_areas*land_and_coast_mask
+land_and_coast_surface_with_high_wind_power = (wind_resource['mean_wind_power_density']>=150)*land_and_coast_surface
+percentage_of_land_and_coast_surface_with_with_high_wind_power = land_and_coast_surface_with_high_wind_power.sum()/land_and_coast_surface.sum()*100
 
+# Calculate the percentage of land and coast areas with a mean wind power density equal to or greater than 150 W/m2 and with a significant change in the wind power density, weather variability and wind droughts.
+land_and_coast_surface_with_high_wind_power_and_significant_wind_power_change = (regression_of_wind_power_density['p_value'] <= 0.05)*land_and_coast_surface_with_high_wind_power
+land_and_coast_surface_with_high_wind_power_and_significant_weather_variability_change = (regression_of_weather_variability['p_value'] <= 0.05)*land_and_coast_surface_with_high_wind_power
+land_and_coast_surface_with_high_wind_power_and_significant_wind_drought_change = (regression_of_wind_droughts['p_value'] <= 0.05)*land_and_coast_surface_with_high_wind_power
+percentage_of_land_and_coast_surface_with_with_high_wind_power_and_significant_wind_power_change = land_and_coast_surface_with_high_wind_power_and_significant_wind_power_change.sum()/land_and_coast_surface.sum()*100
+percentage_of_land_and_coast_surface_with_with_high_wind_power_and_significant_weather_variability_change = land_and_coast_surface_with_high_wind_power_and_significant_weather_variability_change.sum()/land_and_coast_surface.sum()*100
+percentage_of_land_and_coast_surface_with_with_high_wind_power_and_significant_wind_drought_change = land_and_coast_surface_with_high_wind_power_and_significant_wind_drought_change.sum()/land_and_coast_surface.sum()*100
+
+(wind_resource['mean_wind_power_density']*land_and_coast_mask).max()
 
 # FIGURE 1
-figure_1.plot_figure_1(lons_grid, lats_grid, percentile_rank_of_wind_power_density, percentile_rank_of_seasonal_variability, percentile_rank_of_weather_variability, wind_resource, energy_deficits)
+figure_1.plot_figure_1(lons_grid, lats_grid, percentile_rank_of_wind_power_density, percentile_rank_of_seasonal_variability, percentile_rank_of_weather_variability, wind_resource, energy_deficits, land_and_coast_mask)
 
 # FIGURE 2
 figure_2.plot_figure_2(lons_grid, lats_grid, minimum_percentile_rank)

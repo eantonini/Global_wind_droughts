@@ -21,7 +21,7 @@ import cartopy.crs as ccrs
 import settings as settings
 
 
-def plot_figure_1(lons_grid, lats_grid, percentile_rank_of_wind_power_density, percentile_rank_of_seasonal_variability, percentile_rank_of_weather_variability, wind_resource, energy_deficits):
+def plot_figure_1(lons_grid, lats_grid, percentile_rank_of_wind_power_density, percentile_rank_of_seasonal_variability, percentile_rank_of_weather_variability, wind_resource, energy_deficits, land_and_coast_mask):
     '''
     Plot and save the maps of percentile ranks of wind power density, seasonal variability and weather variability.
     
@@ -89,6 +89,9 @@ def plot_figure_1(lons_grid, lats_grid, percentile_rank_of_wind_power_density, p
         
         # For each tick value of the percentile rank, calculate the corresponding value of the original variable and annotate it.
         for kk in range(len(tick_values)):
+
+            # Remove the values of the original variable that are not on land or coast.
+            original_variables[ii] = original_variables[ii].where(land_and_coast_mask, np.nan)
 
             # Calculate the value of the original variable. The energy deficits have a descending percentile rank, so the tick values are reversed.
             if ii > 0:
