@@ -16,7 +16,7 @@ To run the scripts in this repository, you need to have:
 
 ## Conda environments
 
-The folder [environments](https://github.com/eantonini/Global_wind_droughts/tree/main/environments) contains yaml files to create conda environments for
+The [environments](https://github.com/eantonini/Global_wind_droughts/tree/main/environments) folder contains yaml files to create conda environments for
 
 * downloading climate data from the Copernicus' Climate Data Store,
 * processing the climate data and calculate the wind power densities and energy deficits,
