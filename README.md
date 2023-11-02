@@ -123,6 +123,6 @@ Note that step 8 and 9 generate energy deficit for a specific year and save it t
 
 To analyze the wind power densities and energy deficits and generate the figures of the paper, you need to run the following command from within the [script_and_data](https://github.com/eantonini/Global_wind_droughts/tree/main/scripts_and_data) folder:
 
-'''
+```
 python step_10_analyze_results.py
-'''
+```
