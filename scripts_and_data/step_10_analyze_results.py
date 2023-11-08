@@ -70,7 +70,7 @@ drought_extension = utilities.get_drought_extension(cell_areas, geographic_masks
 
 # Calculate the percentage of land and coast areas with a mean wind power density equal to or greater than 150 W/m2.
 land_and_coast_surface = cell_areas*land_and_coast_mask
-land_and_coast_surface_with_high_wind_power = (wind_resource['mean_wind_power_density']>=210)*land_and_coast_surface
+land_and_coast_surface_with_high_wind_power = (wind_resource['mean_wind_power_density']>=150)*land_and_coast_surface
 percentage_of_land_and_coast_surface_with_with_high_wind_power = land_and_coast_surface_with_high_wind_power.sum()/land_and_coast_surface.sum()*100
 
 # Calculate the percentage of land and coast areas with a mean wind power density equal to or greater than 150 W/m2 and with a significant change in the wind power density, weather variability and wind droughts.
