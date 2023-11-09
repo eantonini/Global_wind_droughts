@@ -5,6 +5,8 @@ Enrico G. A. Antonini, Edgar Virgüez, Sara Ashfaq, Lei Duan, Tyler H. Ruggles, 
 
 If you need a copy of the paper or have any questions about the scripts, please email me at enrico.antonini@eiee.org.
 
+[**Note:** Already postprocessed data including wind power densities and energy deficits are available in the following [Zenodo repository](https://zenodo.org/).]
+
 ## Prerequisites
 
 To run the scripts in this repository, you need to have:
@@ -13,6 +15,8 @@ To run the scripts in this repository, you need to have:
 * [CDS API key](https://cds.climate.copernicus.eu/api-how-to), which is needed to download the climate data from the Copernicus' Climate Data Store.
 * 6 TB of free disk space. 3 TB are needed to download the climate data and 3 TB are needed to process the climate data and calculate the wind power densities and energy deficits.
 * Sufficient RAM memory to process the climate data. Downloaded climate files each containing a single variable for a single year are about 17 GB. Other derived files have dimensions up to 68 GB. I would recommend at least 128 GB of RAM memory. Some steps were intentionally made supre basic to minimize the RAM memory usage.
+
+[**Note:** If you download the already postprocessed data, you only need to have Conda. The scripts for analyzing them can be run on a regular laptop.]
 
 ## Conda environments
 
@@ -28,6 +32,8 @@ conda env create --file selected_environment.yml
 ```
 where you need to specify the actual yaml file name.
 
+[**Note:** If you download the already postprocessed data, you only need to create the environment for analyzing the final data.]
+
 ## Climate data download
 
 [Required conda environemt: `download_climate_data`]
@@ -38,13 +44,15 @@ python step0_download_data.py
 ```
 The download will take several hours, depending on your internet connection, and will require about 3 TB of disk space.
 
+[**Note:** If you download the already postprocessed data, the climate data download is not necessary.]
+
 ## Climate data processing
 
 [Required conda environemt: `wind_droughts_processing`]
 
 To process the climate data and calculate the wind power densities and energy deficits, you need to run the following commands from within the [script_and_data](https://github.com/eantonini/Global_wind_droughts/tree/main/scripts_and_data) folder.
 
-**Note:** Already postprocessed data including wind power densities and energy deficits are available at the following [Zenodo repository](https://zenodo.org/).
+[**Note:** If you download the already postprocessed data, the climate data processing is not necessary.]
 
 ### Step 1
 
