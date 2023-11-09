@@ -44,6 +44,8 @@ The download will take several hours, depending on your internet connection, and
 
 To process the climate data and calculate the wind power densities and energy deficits, you need to run the following commands from within the [script_and_data](https://github.com/eantonini/Global_wind_droughts/tree/main/scripts_and_data) folder.
 
+**Note:** Already postprocessed data including wind power densities and energy deficits are available at the following [Zenodo repository](https://zenodo.org/).
+
 ### Step 1
 
 Get the wind speed time series in a given year and its annual mean:
