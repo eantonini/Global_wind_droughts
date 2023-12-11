@@ -22,6 +22,10 @@ import cartopy.crs as ccrs
 import settings as settings
 
 
+# Set the font size.
+plt.rc('font', size=20)
+
+
 def plot_figure_4(lons_grid, lats_grid, regression_of_wind_power_density, regression_of_weather_variability, regression_of_wind_droughts):
     '''
     Plot the maps of the trends in the wind power density, weather variability and wind droughts.
@@ -60,9 +64,8 @@ def plot_figure_4(lons_grid, lats_grid, regression_of_wind_power_density, regres
     map_projection = ccrs.Robinson(central_longitude=0, globe=None)
     data_crs = ccrs.PlateCarree()
 
-    # Initialize the figure and the axes of the subplots, and set the font size.
+    # Initialize the figure and the axes of the subplots.
     fig, axs = plt.subplots(3, 1, figsize=(16, 20), subplot_kw={'projection': map_projection})
-    plt.rc('font', size=20)
 
     # Set the hatch linewidth.
     plt.rcParams['hatch.linewidth'] = 0.5

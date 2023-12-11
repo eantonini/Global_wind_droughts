@@ -22,6 +22,10 @@ import cartopy.crs as ccrs
 import settings as settings
 
 
+# Set the font size.
+plt.rc('font', size=20)
+
+
 def plot_supplementary_figure_3(lons_grid, lats_grid, geographic_masks):
     '''
     Plot and save the maps of the land, coast and sea masks.
@@ -45,9 +49,8 @@ def plot_supplementary_figure_3(lons_grid, lats_grid, geographic_masks):
     map_projection = ccrs.Robinson(central_longitude=0, globe=None)
     data_crs = ccrs.PlateCarree()
 
-    # Initialize the figure and the axes of the subplots, and set the font size.
+    # Initialize the figure and the axes of the subplots.
     fig, axs = plt.subplots(3, 1, figsize=(15, 20), subplot_kw={'projection': map_projection})
-    plt.rc('font', size=20)
 
     # Plot the maps of the land, coast and sea masks.
     for ii, mask in enumerate(list(geographic_masks)):

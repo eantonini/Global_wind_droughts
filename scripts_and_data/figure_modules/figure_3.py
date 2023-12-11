@@ -22,6 +22,10 @@ import cartopy.crs as ccrs
 import settings as settings
 
 
+# Set the font size.
+plt.rc('font', size=20)
+
+
 def plot_figure_3(lons_grid, lats_grid, geographic_masks, continent_masks, wind_resource, drought_extension):
     '''
     Plot and save the map of the spatial extension of the most severe wind droughts in each continent and in each year.
@@ -64,9 +68,8 @@ def plot_figure_3(lons_grid, lats_grid, geographic_masks, continent_masks, wind_
     map_projection = ccrs.Robinson(central_longitude=0, globe=None)
     data_crs = ccrs.PlateCarree()
 
-    # Initialize the figure and set the font size.
+    # Initialize the figure.
     fig, ax = plt.subplots(figsize=(12, 9))
-    plt.rc('font', size=20)
 
     # Plot the spatial extension of the most severe wind droughts in each continent and in each year.
     for ii, continent in enumerate(list(drought_extension.data_vars)):

@@ -22,6 +22,10 @@ import matplotlib.pyplot as plt
 import settings as settings
 
 
+# Set the font size.
+plt.rc('font', size=20)
+
+
 def plot_supplementary_figure_1():
     '''
     Plot the sample time series of wind power density, generation and demand.
@@ -80,9 +84,8 @@ def plot_supplementary_figure_1():
     # Plot the sample time series of wind power density, generation and demand.
     for ii in range(len(variables_to_plot)):
 
-        # Initialize the figure and set the font size.
+        # Initialize the figure.
         plt.figure(figsize=(8,4))
-        plt.rc('font', size=20)
 
         # Plot the time series.
         plt.plot(np.linspace(0,1,len(variables_to_plot[ii])),variables_to_plot[ii], color=colors[ii], linestyle='-', alpha=0.6)

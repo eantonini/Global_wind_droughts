@@ -21,6 +21,10 @@ import matplotlib.colors as colors
 import settings as settings
 
 
+# Set the font size.
+plt.rc('font', size=20)
+
+
 def plot_histogram(fig, x_bin_edges, y_bin_edges, wind_power_density_ticks, median_storage_requirement, histogram,
                    main_histogram_colormap, main_histogram_norm, line_color, y_variable_name, y_variable_secondary_name, secondary_histogram_color,
                    secondary_histogram_x_levels, secondary_histogram_y_levels, y_axis_label, histogram_title, plot_colorbar, plot_median_label,
@@ -195,9 +199,8 @@ def plot_supplementary_figure_5(wind_resource, histogram_of_seasonal_variability
     y_bin_edges = np.linspace(0,1,26)
     wind_power_density_ticks = np.linspace(0.02,0.98,25)*rounded_max_wind_power_density
     
-    # Initialize the first figure and the axes of the subplots, and set the font size.
+    # Initialize the first figure and the axes of the subplots.
     fig = plt.figure(figsize=(16, 7))
-    plt.rc('font', size=20)
 
     # Add three subfigures to the figure.
     subfigsnest_histograms = fig.subfigures(1, 3)

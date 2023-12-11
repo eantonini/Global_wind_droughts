@@ -21,6 +21,10 @@ import cartopy.crs as ccrs
 import settings as settings
 
 
+# Set the font size.
+plt.rc('font', size=20)
+
+
 def plot_figure_2(lons_grid, lats_grid, minimum_percentile_rank):
     '''
     Plot and save the map of minimum percentile rank across wind power density, seasonal variability and weather variability.
@@ -43,9 +47,8 @@ def plot_figure_2(lons_grid, lats_grid, minimum_percentile_rank):
     map_projection = ccrs.Robinson(central_longitude=0, globe=None)
     data_crs = ccrs.PlateCarree()
 
-    # Initialize the figure and the axes of the subplots, and set the font size.
+    # Initialize the figure and the axes of the subplots.
     fig, ax = plt.subplots(figsize=(15, 10), subplot_kw={'projection': map_projection})
-    plt.rc('font', size=20)
     
     # Plot the coastlines.
     ax.coastlines() # type: ignore
@@ -61,7 +64,7 @@ def plot_figure_2(lons_grid, lats_grid, minimum_percentile_rank):
     cbar.set_ticks(map_levels[::2])
 
     # Add the variable names.
-    plt.annotate('Areas with abundant and reliable winds', xy=(0.5, -0.20), xycoords='axes fraction', horizontalalignment='center', verticalalignment='center', weight='bold', fontsize=26)
+    plt.annotate('Areas with abundant and reliable wind power', xy=(0.5, -0.20), xycoords='axes fraction', horizontalalignment='center', verticalalignment='center', weight='bold', fontsize=26)
     plt.annotate('Minimum percentile rank across power density,\nseasonal variability, and weather variability', xy=(0.5, -0.28), xycoords='axes fraction', horizontalalignment='center', verticalalignment='center', fontsize=20)
 
     # Adjusts subplots to fit figure area.

@@ -22,6 +22,10 @@ import cartopy.crs as ccrs
 import settings as settings
 
 
+# Set the font size.
+plt.rc('font', size=20)
+
+
 def plot_supplementary_figure_6(lons_grid, lats_grid, geographic_masks, wind_resource, energy_deficits, maximum_energy_deficits_for_wind_droughts):
     '''
     Plot and save the maps of the year of occurrence of the most severe wind drought, the intensity of the most severe wind drought, and the probability of a wind drought causing more than 400 hours of energy deficit.
@@ -69,9 +73,8 @@ def plot_supplementary_figure_6(lons_grid, lats_grid, geographic_masks, wind_res
     map_projection = ccrs.Robinson(central_longitude=0, globe=None)
     data_crs = ccrs.PlateCarree()
     
-    # Initialize the figure and the axes of the subplots, and set the font size.
+    # Initialize the figure and the axes of the subplots.
     fig, axs = plt.subplots(3, 1, figsize=(16, 20), subplot_kw={'projection': map_projection})
-    plt.rc('font', size=20)
 
     # Plot the maps of the year of occurrence of the most severe wind drought, the intensity of the most severe wind drought, and the probability of a wind drought causing more than 400 hours of energy deficit.
     for ii in range(3):
