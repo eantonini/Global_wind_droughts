@@ -3,7 +3,7 @@ This repository contains scripts to reproduce the results of the following paper
 
 Enrico G. A. Antonini, Edgar Virgüez, Sara Ashfaq, Lei Duan, Tyler H. Ruggles, Ken Caldeira, "Global distribution of and trends in wind droughts", Communications Earth & Environment, 2024.
 
-If you need a copy of the paper or have any questions about the scripts, please email me at enrico.antonini@eiee.org.
+If you need a copy of the paper or have any questions about the scripts, please email me at enrico.antonini@cmcc.it.
 
 [**Note:** Already postprocessed data including wind power densities and energy deficits are available in the following [Zenodo repository](https://zenodo.org/).]
 
