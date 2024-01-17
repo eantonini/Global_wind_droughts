@@ -1,7 +1,7 @@
 # Global wind droughts
 This repository contains scripts to reproduce the results of the following paper:
 
-Enrico G. A. Antonini, Edgar Virgüez, Sara Ashfaq, Lei Duan, Tyler H. Ruggles, Ken Caldeira, "Global distribution of and trends in wind droughts", Communications Earth & Environment, 2024.
+Enrico G. A. Antonini, Edgar Virgüez, Sara Ashfaq, Lei Duan, Tyler H. Ruggles, Ken Caldeira, "Identification of reliable locations for wind power generation through a global analysis of wind droughts", Communications Earth & Environment, 2024.
 
 If you need a copy of the paper or have any questions about the scripts, please email me at enrico.antonini@cmcc.it.
 
