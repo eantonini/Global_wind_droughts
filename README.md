@@ -5,7 +5,7 @@ Enrico G. A. Antonini, Edgar Virgüez, Sara Ashfaq, Lei Duan, Tyler H. Ruggles, 
 
 If you need a copy of the paper or have any questions about the scripts, please email me at enrico.antonini@cmcc.it.
 
-[**Note:** Already postprocessed data including wind power densities and energy deficits are available in the following [Zenodo repository](https://doi.org/10.5281/zenodo.10082462).]
+[**Note:** Already postprocessed data including wind power densities and energy deficits are available in the following [Zenodo repository](https://zenodo.org/records/10082462).]
 
 ## Prerequisites
 
