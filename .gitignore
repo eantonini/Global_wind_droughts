@@ -1,5 +1,14 @@
 energy_deficit_figure_sample
 scripts_and_data/__pycache__
 scripts_and_data/postprocessed_results
-scripts_and_data/figures
 scripts_and_data/figure_modules/__pycache__
+scripts_and_data/figures/*.eps
+scripts_and_data/figures/*.pptx
+scripts_and_data/figures/Supplementary Figure 3a*
+scripts_and_data/figures/Supplementary Figure 3b*
+scripts_and_data/figures/Supplementary Figure 11a*
+scripts_and_data/figures/Supplementary Figure 11b*
+scripts_and_data/figures/Supplementary Figure 11c*
+scripts_and_data/figures/Supplementary Figure 11d*
+scripts_and_data/figures/Supplementary Figure 11e*
+scripts_and_data/figures/Supplementary Figure 11f*
