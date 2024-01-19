@@ -96,16 +96,21 @@ figure_4.plot_figure_4(lons_grid, lats_grid, regression_of_wind_power_density, r
 
 
 # SUPPLEMENTARY FIGURE 1
-supplementary_figure_1.plot_supplementary_figure_1()
+supplementary_figure_1.plot_supplementary_figure_1(lons_grid, lats_grid, geographic_masks)
+
+# SUPPLEMENTARY FIGURE 2
+supplementary_figure_2.plot_supplementary_figure_2(lons_grid, lats_grid, wind_resource, energy_deficits)
 
 # SUPPLEMENTARY FIGURE 3
-supplementary_figure_3.plot_supplementary_figure_3(lons_grid, lats_grid, geographic_masks)
+supplementary_figure_3.plot_supplementary_figure_3(wind_resource, histogram_of_seasonal_variability, histogram_of_weather_variability, median_of_seasonal_variability, median_of_weather_variability)
 
-# SUPPLEMENTARY FIGURE 4
-supplementary_figure_4.plot_supplementary_figure_4(lons_grid, lats_grid, wind_resource, energy_deficits)
+# SUPPLEMENTARY FIGURES 4 TO 9
+continents = ['Europe', 'North America', 'South America', 'Africa', 'Asia', 'Oceania']
+for continent in continents:
+    supplementary_figure_4_9.plot_supplementary_figure_4_9(lons_grid, lats_grid, minimum_percentile_rank, continent)
 
-# SUPPLEMENTARY FIGURE 5
-supplementary_figure_5.plot_supplementary_figure_5(wind_resource, histogram_of_seasonal_variability, histogram_of_weather_variability, median_of_seasonal_variability, median_of_weather_variability)
+# SUPPLEMENTARY FIGURE 10
+supplementary_figure_10.plot_supplementary_figure_10(lons_grid, lats_grid, geographic_masks, wind_resource, energy_deficits, maximum_energy_deficits_for_wind_droughts)
 
-# SUPPLEMENTARY FIGURE 6
-supplementary_figure_6.plot_supplementary_figure_6(lons_grid, lats_grid, geographic_masks, wind_resource, energy_deficits, maximum_energy_deficits_for_wind_droughts)
+# SUPPLEMENTARY FIGURE 11
+supplementary_figure_11.plot_supplementary_figure_11()

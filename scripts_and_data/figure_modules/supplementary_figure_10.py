@@ -11,7 +11,7 @@ Description:
 
     This script contains the function to plot and save the maps of the year of occurrence of the most severe wind drought, the intensity of the most severe wind drought, and the probability of a wind drought causing more than 400 hours of energy deficit.
 
-    This is Supplementary Figure 6 of the paper.
+    This is Supplementary Figure 10 of the paper.
 '''
 
 import numpy as np
@@ -26,7 +26,7 @@ import settings as settings
 plt.rc('font', size=20)
 
 
-def plot_supplementary_figure_6(lons_grid, lats_grid, geographic_masks, wind_resource, energy_deficits, maximum_energy_deficits_for_wind_droughts):
+def plot_supplementary_figure_10(lons_grid, lats_grid, geographic_masks, wind_resource, energy_deficits, maximum_energy_deficits_for_wind_droughts):
     '''
     Plot and save the maps of the year of occurrence of the most severe wind drought, the intensity of the most severe wind drought, and the probability of a wind drought causing more than 400 hours of energy deficit.
 
@@ -58,9 +58,19 @@ def plot_supplementary_figure_6(lons_grid, lats_grid, geographic_masks, wind_res
     frequency_of_long_deficits = energy_deficits['wind_droughts'].where(energy_deficits['wind_droughts'] >= 400, np.nan).count(dim='year')/len(energy_deficits['year'])
     frequency_of_long_deficits_of_interest = frequency_of_long_deficits.where(cells_of_interest, np.nan)
     
+    # Define a custom colormap.
+    N = 256
+    vals = np.ones((N, 4))
+    base_colors = np.array([[255, 0, 0], [255, 255, 0], [0, 255, 0], [0, 0, 255], [255, 0, 255]])/255
+    for ii in range(len(base_colors)-1):
+        vals[int(N*ii/(len(base_colors)-1)):int(N*(ii+1)/(len(base_colors)-1)), 0] = np.linspace(base_colors[ii][0], base_colors[ii+1][0], int(N/(len(base_colors)-1)))
+        vals[int(N*ii/(len(base_colors)-1)):int(N*(ii+1)/(len(base_colors)-1)), 1] = np.linspace(base_colors[ii][1], base_colors[ii+1][1], int(N/(len(base_colors)-1)))
+        vals[int(N*ii/(len(base_colors)-1)):int(N*(ii+1)/(len(base_colors)-1)), 2] = np.linspace(base_colors[ii][2], base_colors[ii+1][2], int(N/(len(base_colors)-1)))
+    custom_colormap = mpl.colors.ListedColormap(vals)
+
     # Define the map levels, colormaps, variable names, panel letters and ticks.
     map_levels = [energy_deficits['year'].values, np.linspace(0, 2000, 21), np.linspace(0,1,21)]
-    map_colormaps = ['jet', 'YlOrRd', 'GnBu']
+    map_colormaps = [custom_colormap, 'YlOrRd', 'GnBu']
     map_variable_name = ['Year of most\nsevere wind drought', 'Intensity of most\nsevere wind drought', 'Probability of a wind\ndrought causing more\nthan 400 hours\nof energy deficit']
     map_variable_secondary_name = ['[hours of energy deficit]']
     panel_letter = ['a', 'b', 'c']
@@ -119,6 +129,5 @@ def plot_supplementary_figure_6(lons_grid, lats_grid, geographic_masks, wind_res
     plt.tight_layout()
 
     # Set the title and save the figure.
-    title = '/Supplementary Figure 6 - Maps of drought analysis'
+    title = '/Supplementary Figure 10 - Maps of drought analysis'
     fig.savefig(settings.figures_directory + title+'.png', bbox_inches = 'tight', dpi = 300)
-    fig.savefig(settings.figures_directory + title+'.eps', format='eps', bbox_inches = 'tight', dpi = 300)

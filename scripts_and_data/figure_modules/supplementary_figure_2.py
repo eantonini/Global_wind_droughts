@@ -11,7 +11,7 @@ Description:
 
     This script contains the function to plot and save the maps of trends in the wind power density, seasonal variability and weather variability.
 
-    This is Supplementary Figure 4 of the paper.
+    This is Supplementary Figure 2 of the paper.
 '''
 
 import numpy as np
@@ -26,7 +26,7 @@ import settings as settings
 plt.rc('font', size=20)
 
 
-def plot_supplementary_figure_4(lons_grid, lats_grid, wind_resource, energy_deficits):
+def plot_supplementary_figure_2(lons_grid, lats_grid, wind_resource, energy_deficits):
     '''
     Plot the maps of wind power density and variability.
 
@@ -104,6 +104,5 @@ def plot_supplementary_figure_4(lons_grid, lats_grid, wind_resource, energy_defi
     plt.tight_layout()
 
     # Set the title and save the figure.
-    title = '/Supplementary Figure 4 - Maps of wind power density and variability'
+    title = '/Supplementary Figure 2 - Maps of wind power density and variability'
     fig.savefig(settings.figures_directory + title+'.png', bbox_inches = 'tight', dpi = 300)
-    fig.savefig(settings.figures_directory + title+'.eps', format='eps', bbox_inches = 'tight', dpi = 300)

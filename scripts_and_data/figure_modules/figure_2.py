@@ -41,7 +41,7 @@ def plot_figure_2(lons_grid, lats_grid, minimum_percentile_rank):
 
     # Define the map levels and colormap.
     map_levels = np.linspace(0, 100, 11)
-    map_colormaps = 'Purples'
+    map_colormaps = 'turbo'
 
     # Define the map projection and the coordinate reference system of the data to plot.
     map_projection = ccrs.Robinson(central_longitude=0, globe=None)
@@ -51,7 +51,7 @@ def plot_figure_2(lons_grid, lats_grid, minimum_percentile_rank):
     fig, ax = plt.subplots(figsize=(15, 10), subplot_kw={'projection': map_projection})
     
     # Plot the coastlines.
-    ax.coastlines() # type: ignore
+    ax.coastlines()
 
     # Plot the minimum percentile rank.
     im = ax.contourf(lons_grid, lats_grid, minimum_percentile_rank, levels=map_levels, cmap=map_colormaps, transform=data_crs)

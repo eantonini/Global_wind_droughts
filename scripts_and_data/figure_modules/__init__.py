@@ -17,7 +17,8 @@ __all__ = ['figure_1',
            'figure_3',
            'figure_4',
            'supplementary_figure_1',
+           'supplementary_figure_2',
            'supplementary_figure_3',
-           'supplementary_figure_4',
-           'supplementary_figure_5',
-           'supplementary_figure_6']
+           'supplementary_figure_4_9',
+           'supplementary_figure_10',
+           'supplementary_figure_11']
