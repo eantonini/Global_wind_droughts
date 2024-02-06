@@ -15,6 +15,7 @@ Description:
 '''
 
 import numpy as np
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 
@@ -39,9 +40,28 @@ def plot_figure_2(lons_grid, lats_grid, minimum_percentile_rank):
         Minimum percentile rank across wind power density, seasonal variability and weather variability
     '''
 
-    # Define the map levels and colormap.
+    # Define the map levels.
     map_levels = np.linspace(0, 100, 11)
-    map_colormaps = 'turbo'
+
+    # Get the original colormap.
+    original_colormap = mpl.colormaps['turbo']
+
+    # Extract the base colors of the original colormap.
+    base_colors = original_colormap(np.linspace(0, 1, 11))
+    
+    # Modify some base colors to soften some green tones.
+    base_colors[4,:] = np.array([163, 247, 131, 255])/255 # original [70.4, 247.6, 131.7, 255]
+    base_colors[5,:] = np.array([221, 252, 60, 255])/255 # original [164.1, 252.4, 59.6, 255]
+    base_colors[6,:] = np.array([255, 244, 126, 255])/255 # original [225.2, 220.7, 55.3, 255]
+
+    # Create a custom colormap.
+    N = (len(base_colors) - 1) * 20
+    vals = np.ones((N, 4))    
+    for ii in range(len(base_colors)-1):
+        vals[int(N*ii/(len(base_colors)-1)):int(N*(ii+1)/(len(base_colors)-1)), 0] = np.linspace(base_colors[ii][0], base_colors[ii+1][0], int(N/(len(base_colors)-1)))
+        vals[int(N*ii/(len(base_colors)-1)):int(N*(ii+1)/(len(base_colors)-1)), 1] = np.linspace(base_colors[ii][1], base_colors[ii+1][1], int(N/(len(base_colors)-1)))
+        vals[int(N*ii/(len(base_colors)-1)):int(N*(ii+1)/(len(base_colors)-1)), 2] = np.linspace(base_colors[ii][2], base_colors[ii+1][2], int(N/(len(base_colors)-1)))
+    custom_colormap = mpl.colors.ListedColormap(vals)
 
     # Define the map projection and the coordinate reference system of the data to plot.
     map_projection = ccrs.Robinson(central_longitude=0, globe=None)
@@ -54,7 +74,7 @@ def plot_figure_2(lons_grid, lats_grid, minimum_percentile_rank):
     ax.coastlines()
 
     # Plot the minimum percentile rank.
-    im = ax.contourf(lons_grid, lats_grid, minimum_percentile_rank, levels=map_levels, cmap=map_colormaps, transform=data_crs)
+    im = ax.contourf(lons_grid, lats_grid, minimum_percentile_rank, levels=map_levels, cmap=custom_colormap, transform=data_crs)
 
     # Plot the contour lines.
     ax.contour(lons_grid, lats_grid, minimum_percentile_rank, levels=map_levels, colors='k', zorder=6, linewidths=0.1, transform=data_crs)
