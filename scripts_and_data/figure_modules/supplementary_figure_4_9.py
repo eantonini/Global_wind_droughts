@@ -117,3 +117,4 @@ def plot_supplementary_figure_4_9(lons_grid, lats_grid, minimum_percentile_rank,
     # Set the title and save the figure.
     title = '/Supplementary Figure {:d} - Map of minimum percentile in '.format(ii) + continent
     fig.savefig(settings.figures_directory + title+'.png', bbox_inches = 'tight', dpi = 300)
+    fig.savefig(settings.figures_directory + title+'.eps', format='eps', bbox_inches = 'tight', dpi = 300)

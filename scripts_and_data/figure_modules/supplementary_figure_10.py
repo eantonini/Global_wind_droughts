@@ -131,3 +131,4 @@ def plot_supplementary_figure_10(lons_grid, lats_grid, geographic_masks, wind_re
     # Set the title and save the figure.
     title = '/Supplementary Figure 10 - Maps of drought analysis'
     fig.savefig(settings.figures_directory + title+'.png', bbox_inches = 'tight', dpi = 300)
+    fig.savefig(settings.figures_directory + title+'.eps', format='eps', bbox_inches = 'tight', dpi = 300)

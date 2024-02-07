@@ -106,3 +106,4 @@ def plot_supplementary_figure_2(lons_grid, lats_grid, wind_resource, energy_defi
     # Set the title and save the figure.
     title = '/Supplementary Figure 2 - Maps of wind power density and variability'
     fig.savefig(settings.figures_directory + title+'.png', bbox_inches = 'tight', dpi = 300)
+    fig.savefig(settings.figures_directory + title+'.eps', format='eps', bbox_inches = 'tight', dpi = 300)
