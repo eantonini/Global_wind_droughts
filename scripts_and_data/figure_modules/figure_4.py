@@ -98,7 +98,7 @@ def plot_figure_4(lons_grid, lats_grid, regression_of_wind_power_density, regres
 
         # Annotate the definition of the hatch lines.
         if ii == 2:
-            ax.annotate('Hatches indicate regions\nwithout statistically significant trends', xy=(0.5, -0.10), xycoords='axes fraction', horizontalalignment='center', verticalalignment='center', weight='bold', fontsize=20)
+            ax.annotate('Parallel lines indicate regions\nwithout statistically significant trends', xy=(0.5, -0.10), xycoords='axes fraction', horizontalalignment='center', verticalalignment='center', weight='bold', fontsize=20)
 
         # Add a colorbar.
         cbar = plt.colorbar(im, shrink=0.6, ax=ax, pad=0.03)

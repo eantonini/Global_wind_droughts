@@ -123,7 +123,7 @@ def plot_figure_1(lons_grid, lats_grid, percentile_rank_of_wind_power_density, p
             ax.annotate('Ascending\npercentile\nrank', xy=(1.11, 0.90), xycoords='axes fraction', horizontalalignment='left', verticalalignment='center', weight='bold', fontsize=20)
         else:
             ax.annotate('Descending\npercentile\nrank', xy=(1.11, 0.90), xycoords='axes fraction', horizontalalignment='left', verticalalignment='center', weight='bold', fontsize=20)
-    
+        
     # Adjusts subplots to fit figure area.
     plt.tight_layout()
 
