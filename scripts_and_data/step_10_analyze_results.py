@@ -25,8 +25,8 @@ if not os.path.exists(settings.figures_directory):
     os.mkdir(settings.figures_directory)
 
 # Define the longitude and latitude grid.
-lons = np.array(np.arange(0,360.25,0.25))
-lats = np.array(np.arange(90,-90.25,-0.25))
+lons = np.arange(0,360.25,0.25)
+lats = np.arange(90,-90.25,-0.25)
 lons_grid, lats_grid = np.meshgrid(lons,lats)
 
 # Calculate the grid cell areas.
